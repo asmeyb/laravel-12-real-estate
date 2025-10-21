@@ -138,7 +138,7 @@ class Property extends Model
     //accessor methods
     public function getFormattedPriceAttribute(): string
     {
-        return 'TZS ' . number_format($this->price, 0);
+        return 'ETB ' . number_format($this->price, 0);
     }
 
     public function getFullAddressAttribute(): string
