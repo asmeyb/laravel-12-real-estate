@@ -107,8 +107,10 @@ class Property extends Model
     public function featured(Builder $query)
     {
         return $query->where('is_featured', true)
-            ->where('is_active', true)
-            ->where('featured_until', '>=', now());
+            ->where(function ($q) {
+                $q->whereNull('featured_until')
+                    ->orWhere('featured_until', '>', now());
+            });
     }
 
     #[Scope]
